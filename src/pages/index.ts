@@ -1,0 +1,12 @@
+export { Dashboard } from "./Dashboard";
+export { Flights } from "./Flights";
+export { Bookings } from "./Bookings";
+export { Passengers } from "./Passengers";
+export { Finance } from "./Finance";
+export { Promos } from "./Promos";
+export { Campaigns } from "./Campaigns";
+export { Users } from "./Users";
+export { Analytics } from "./Analytics";
+export { Accounting } from "./Accounting";
+export { Corporate } from "./Corporate";
+export { GroupBooking } from "./GroupBooking";
