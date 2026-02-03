@@ -86,3 +86,47 @@ export interface NavItem {
   path: string;
   badge?: number;
 }
+
+// Pricing Markup types
+export interface PricingRule {
+  id: string;
+  name: string;
+  airline?: string;
+  origin?: string;
+  destination?: string;
+  markupType: "PERCENTAGE" | "FIXED";
+  markupValue: number;
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface FlightWithMarkup extends Flight {
+  basePrice: number;
+  markupAmount: number;
+  finalPrice: number;
+  appliedRule?: PricingRule;
+}
+
+// Chat Support types
+export interface ChatMessage {
+  id: string;
+  conversationId: string;
+  sender: "customer" | "ai" | "admin";
+  content: string;
+  timestamp: string;
+  isRead: boolean;
+}
+
+export interface ChatConversation {
+  id: string;
+  customerId: string;
+  customerName: string;
+  customerEmail: string;
+  customerAvatar?: string;
+  status: "active" | "resolved" | "pending";
+  lastMessage: string;
+  lastMessageTime: string;
+  unreadCount: number;
+  messages: ChatMessage[];
+}

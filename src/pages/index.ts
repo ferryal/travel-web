@@ -10,3 +10,5 @@ export { Analytics } from "./Analytics";
 export { Accounting } from "./Accounting";
 export { Corporate } from "./Corporate";
 export { GroupBooking } from "./GroupBooking";
+export { PricingRules } from "./PricingRules";
+export { ChatSupport } from "./ChatSupport";

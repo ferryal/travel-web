@@ -12,17 +12,17 @@ import {
 // Income Statement Data
 const incomeData = {
   revenue: {
-    ticketSales: 485000,
-    serviceFees: 45000,
-    ancillaryServices: 35500,
-    corporateContracts: 95000,
+    ticketSales: 7760000000,
+    serviceFees: 720000000,
+    ancillaryServices: 568000000,
+    corporateContracts: 1520000000,
   },
   expenses: {
-    operationalCosts: 120000,
-    marketing: 35000,
-    salaries: 85000,
-    technology: 25000,
-    other: 15000,
+    operationalCosts: 1920000000,
+    marketing: 560000000,
+    salaries: 1360000000,
+    technology: 400000000,
+    other: 240000000,
   },
 };
 
@@ -38,40 +38,60 @@ const netProfit = totalRevenue - totalExpenses;
 
 // Cash Flow Data
 const cashFlow = [
-  { date: "Jan 28", inflow: 45000, outflow: 28000, balance: 125000 },
-  { date: "Jan 29", inflow: 52000, outflow: 35000, balance: 142000 },
-  { date: "Jan 30", inflow: 38000, outflow: 42000, balance: 138000 },
-  { date: "Jan 31", inflow: 61000, outflow: 31000, balance: 168000 },
+  {
+    date: "Jan 28",
+    inflow: 720000000,
+    outflow: 448000000,
+    balance: 2000000000,
+  },
+  {
+    date: "Jan 29",
+    inflow: 832000000,
+    outflow: 560000000,
+    balance: 2272000000,
+  },
+  {
+    date: "Jan 30",
+    inflow: 608000000,
+    outflow: 672000000,
+    balance: 2208000000,
+  },
+  {
+    date: "Jan 31",
+    inflow: 976000000,
+    outflow: 496000000,
+    balance: 2688000000,
+  },
 ];
 
 // Accounts Receivable
 const receivables = [
   {
-    company: "TechCorp Inc.",
-    invoice: "INV-2024-0145",
-    amount: 24500,
-    dueDate: "2024-02-15",
+    company: "PT TechCorp Indonesia",
+    invoice: "INV-2026-0145",
+    amount: 392000000,
+    dueDate: "2026-02-15",
     status: "current",
   },
   {
     company: "Global Travel Agency",
-    invoice: "INV-2024-0132",
-    amount: 18750,
-    dueDate: "2024-02-05",
+    invoice: "INV-2026-0132",
+    amount: 300000000,
+    dueDate: "2026-02-05",
     status: "current",
   },
   {
-    company: "Sunset Holidays",
-    invoice: "INV-2024-0098",
-    amount: 12300,
-    dueDate: "2024-01-28",
+    company: "Sunset Holidays Bali",
+    invoice: "INV-2026-0098",
+    amount: 196800000,
+    dueDate: "2026-01-28",
     status: "overdue",
   },
   {
     company: "Corporate Travels Ltd",
-    invoice: "INV-2024-0087",
-    amount: 35000,
-    dueDate: "2024-01-20",
+    invoice: "INV-2026-0087",
+    amount: 560000000,
+    dueDate: "2026-01-20",
     status: "overdue",
   },
 ];
@@ -79,61 +99,61 @@ const receivables = [
 // Accounts Payable
 const payables = [
   {
-    vendor: "Airline Partner A",
+    vendor: "Garuda Indonesia Partner",
     invoice: "VND-8845",
-    amount: 85000,
-    dueDate: "2024-02-10",
+    amount: 1360000000,
+    dueDate: "2026-02-10",
     category: "Operations",
   },
   {
-    vendor: "Cloud Services Inc",
+    vendor: "Cloud Services Indo",
     invoice: "VND-8821",
-    amount: 4500,
-    dueDate: "2024-02-01",
+    amount: 72000000,
+    dueDate: "2026-02-01",
     category: "Technology",
   },
   {
-    vendor: "Marketing Agency",
+    vendor: "Digital Marketing Agency",
     invoice: "VND-8798",
-    amount: 12000,
-    dueDate: "2024-02-05",
+    amount: 192000000,
+    dueDate: "2026-02-05",
     category: "Marketing",
   },
 ];
 
 // Tax Summary
 const taxSummary = {
-  collected: 45200,
-  payable: 38500,
-  credits: 6700,
-  nextDue: "2024-03-31",
+  collected: 723200000,
+  payable: 616000000,
+  credits: 107200000,
+  nextDue: "2026-03-31",
 };
 
 // Journal Entries
 const journalEntries = [
   {
-    id: "JE-2024-0089",
-    date: "2024-01-30",
+    id: "JE-2026-0089",
+    date: "2026-01-30",
     description: "Ticket sales revenue",
     debit: "Cash",
     credit: "Revenue",
-    amount: 52000,
+    amount: 832000000,
   },
   {
-    id: "JE-2024-0088",
-    date: "2024-01-30",
+    id: "JE-2026-0088",
+    date: "2026-01-30",
     description: "Marketing expense",
     debit: "Marketing Expense",
     credit: "Cash",
-    amount: 5000,
+    amount: 80000000,
   },
   {
-    id: "JE-2024-0087",
-    date: "2024-01-29",
+    id: "JE-2026-0087",
+    date: "2026-01-29",
     description: "Salary payment",
     debit: "Salary Expense",
     credit: "Cash",
-    amount: 28000,
+    amount: 448000000,
   },
 ];
 
@@ -176,7 +196,7 @@ export function Accounting() {
               <div>
                 <p className="text-sm text-success-600">Total Revenue</p>
                 <p className="text-2xl font-bold text-success-700">
-                  ${(totalRevenue / 1000).toFixed(0)}K
+                  Rp {(totalRevenue / 1000000000).toFixed(1)}M
                 </p>
               </div>
             </div>
@@ -196,7 +216,7 @@ export function Accounting() {
               <div>
                 <p className="text-sm text-danger-600">Total Expenses</p>
                 <p className="text-2xl font-bold text-danger-700">
-                  ${(totalExpenses / 1000).toFixed(0)}K
+                  Rp {(totalExpenses / 1000000000).toFixed(1)}M
                 </p>
               </div>
             </div>
@@ -216,7 +236,7 @@ export function Accounting() {
               <div>
                 <p className="text-sm text-primary-600">Net Profit</p>
                 <p className="text-2xl font-bold text-primary-700">
-                  ${(netProfit / 1000).toFixed(0)}K
+                  Rp {(netProfit / 1000000000).toFixed(1)}M
                 </p>
               </div>
             </div>
@@ -251,7 +271,7 @@ export function Accounting() {
                         {key.replace(/([A-Z])/g, " $1").trim()}
                       </span>
                       <span className="text-sm font-medium text-success-600">
-                        +${value.toLocaleString()}
+                        +Rp {value.toLocaleString("id-ID")}
                       </span>
                     </div>
                   ))}
@@ -269,7 +289,7 @@ export function Accounting() {
                         {key.replace(/([A-Z])/g, " $1").trim()}
                       </span>
                       <span className="text-sm font-medium text-danger-600">
-                        -${value.toLocaleString()}
+                        -Rp {value.toLocaleString("id-ID")}
                       </span>
                     </div>
                   ))}
@@ -299,15 +319,15 @@ export function Accounting() {
                         {day.date}
                       </span>
                       <span className="text-sm font-bold text-slate-900">
-                        ${day.balance.toLocaleString()}
+                        Rp {day.balance.toLocaleString("id-ID")}
                       </span>
                     </div>
                     <div className="flex gap-4">
                       <span className="text-xs text-success-600">
-                        ↑ ${day.inflow.toLocaleString()}
+                        ↑ Rp {day.inflow.toLocaleString("id-ID")}
                       </span>
                       <span className="text-xs text-danger-600">
-                        ↓ ${day.outflow.toLocaleString()}
+                        ↓ Rp {day.outflow.toLocaleString("id-ID")}
                       </span>
                     </div>
                   </div>
@@ -345,7 +365,7 @@ export function Accounting() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold text-slate-900">
-                        ${item.amount.toLocaleString()}
+                        Rp {item.amount.toLocaleString("id-ID")}
                       </p>
                       <Badge
                         variant={
@@ -391,7 +411,7 @@ export function Accounting() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold text-danger-600">
-                        -${item.amount.toLocaleString()}
+                        -Rp {item.amount.toLocaleString("id-ID")}
                       </p>
                       <p className="text-xs text-slate-400">
                         Due {item.dueDate}
@@ -422,19 +442,19 @@ export function Accounting() {
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-500">Tax Collected</span>
                   <span className="text-sm font-bold text-slate-900">
-                    ${taxSummary.collected.toLocaleString()}
+                    Rp {taxSummary.collected.toLocaleString("id-ID")}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-500">Tax Payable</span>
                   <span className="text-sm font-bold text-danger-600">
-                    -${taxSummary.payable.toLocaleString()}
+                    -Rp {taxSummary.payable.toLocaleString("id-ID")}
                   </span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-slate-500">Tax Credits</span>
                   <span className="text-sm font-bold text-success-600">
-                    +${taxSummary.credits.toLocaleString()}
+                    +Rp {taxSummary.credits.toLocaleString("id-ID")}
                   </span>
                 </div>
                 <div className="border-t border-slate-100 pt-4">
@@ -497,7 +517,7 @@ export function Accounting() {
                           {entry.credit}
                         </td>
                         <td className="py-3 text-right text-sm font-bold text-slate-900">
-                          ${entry.amount.toLocaleString()}
+                          Rp {entry.amount.toLocaleString("id-ID")}
                         </td>
                       </tr>
                     ))}

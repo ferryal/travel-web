@@ -3,20 +3,20 @@ import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui";
 
 const monthlyRevenue = [
-  { month: "Jan", value: 85000 },
-  { month: "Feb", value: 92000 },
-  { month: "Mar", value: 78000 },
-  { month: "Apr", value: 105000 },
-  { month: "May", value: 118000 },
-  { month: "Jun", value: 124500 },
+  { month: "Jan", value: 1360000000 },
+  { month: "Feb", value: 1472000000 },
+  { month: "Mar", value: 1248000000 },
+  { month: "Apr", value: 1680000000 },
+  { month: "May", value: 1888000000 },
+  { month: "Jun", value: 1992000000 },
 ];
 
 const routePerformance = [
-  { route: "LHR → JFK", bookings: 1240, revenue: 558000, growth: 12 },
-  { route: "DXB → SIN", bookings: 980, revenue: 441000, growth: 8 },
-  { route: "PAR → BER", bookings: 850, revenue: 212500, growth: -3 },
-  { route: "LAX → TYO", bookings: 720, revenue: 540000, growth: 15 },
-  { route: "SYD → HKG", bookings: 650, revenue: 325000, growth: 5 },
+  { route: "CGK → DPS", bookings: 1240, revenue: 8928000000, growth: 12 },
+  { route: "CGK → SIN", bookings: 980, revenue: 7056000000, growth: 8 },
+  { route: "SUB → CGK", bookings: 850, revenue: 3400000000, growth: -3 },
+  { route: "DPS → KUL", bookings: 720, revenue: 8640000000, growth: 15 },
+  { route: "CGK → HKG", bookings: 650, revenue: 5200000000, growth: 5 },
 ];
 
 const paymentMethods = [
@@ -78,7 +78,7 @@ export function Analytics() {
             </div>
             <div className="mt-4">
               <p className="text-sm text-slate-400">Total Revenue</p>
-              <h3 className="text-2xl font-bold">$602,500</h3>
+              <h3 className="text-2xl font-bold">Rp 9,64M</h3>
             </div>
           </Card>
         </motion.div>
@@ -138,7 +138,9 @@ export function Analytics() {
             </div>
             <div className="mt-4">
               <p className="text-sm text-slate-400">Avg Order Value</p>
-              <h3 className="text-2xl font-bold text-slate-900">$73.48</h3>
+              <h3 className="text-2xl font-bold text-slate-900">
+                Rp 1.175.680
+              </h3>
             </div>
           </Card>
         </motion.div>
@@ -255,7 +257,7 @@ export function Analytics() {
                     </div>
                     <div className="text-right">
                       <p className="text-sm font-bold text-slate-900">
-                        ${(route.revenue / 1000).toFixed(0)}K
+                        Rp {(route.revenue / 1000000000).toFixed(1)}M
                       </p>
                       <p
                         className={`text-xs font-medium ${

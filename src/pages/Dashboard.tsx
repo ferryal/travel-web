@@ -1,40 +1,6 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
-
-const stats = [
-  {
-    id: "revenue",
-    label: "Total Revenue",
-    value: "$124,500",
-    change: "+14%",
-    icon: "solar:wallet-linear",
-    dark: true,
-  },
-  {
-    id: "tickets",
-    label: "Tickets Sold",
-    value: "4,302",
-    icon: "solar:ticket-sale-linear",
-    iconBg: "bg-primary-50",
-    iconColor: "text-primary-600",
-  },
-  {
-    id: "flights",
-    label: "Active Flights",
-    value: "128",
-    icon: "solar:plane-linear",
-    iconBg: "bg-secondary-50",
-    iconColor: "text-secondary-600",
-  },
-  {
-    id: "passengers",
-    label: "New Passengers",
-    value: "892",
-    icon: "solar:users-group-rounded-linear",
-    iconBg: "bg-pink-50",
-    iconColor: "text-pink-600",
-  },
-];
+import { FormattedMessage, useIntl } from "react-intl";
 
 const topRoutes = [
   {
@@ -64,15 +30,52 @@ const chartData = [40, 65, 50, 85, 95, 60, 75];
 const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
 export function Dashboard() {
+  const intl = useIntl();
+
+  const stats = [
+    {
+      id: "revenue",
+      label: intl.formatMessage({ id: "dashboard.totalRevenue" }),
+      value: "Rp 1.992.000.000",
+      change: "+14%",
+      icon: "solar:wallet-linear",
+      dark: true,
+    },
+    {
+      id: "tickets",
+      label: intl.formatMessage({ id: "dashboard.ticketsSold" }),
+      value: "4.302",
+      icon: "solar:ticket-sale-linear",
+      iconBg: "bg-primary-50",
+      iconColor: "text-primary-600",
+    },
+    {
+      id: "flights",
+      label: intl.formatMessage({ id: "dashboard.activeFlights" }),
+      value: "128",
+      icon: "solar:plane-linear",
+      iconBg: "bg-secondary-50",
+      iconColor: "text-secondary-600",
+    },
+    {
+      id: "passengers",
+      label: intl.formatMessage({ id: "dashboard.newPassengers" }),
+      value: "892",
+      icon: "solar:users-group-rounded-linear",
+      iconBg: "bg-pink-50",
+      iconColor: "text-pink-600",
+    },
+  ];
+
   return (
     <div className="page-enter">
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold tracking-tight text-slate-900">
-          Dashboard
+          <FormattedMessage id="dashboard.title" />
         </h1>
         <p className="mt-1 text-sm text-slate-500">
-          Welcome back, here's what's happening today.
+          <FormattedMessage id="dashboard.welcome" />
         </p>
       </div>
 
@@ -135,11 +138,15 @@ export function Dashboard() {
         >
           <div className="mb-6 flex items-center justify-between">
             <h3 className="text-lg font-bold text-slate-900">
-              Revenue Analytics
+              <FormattedMessage id="dashboard.revenueAnalytics" />
             </h3>
             <select className="rounded-lg border-none bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600 outline-none">
-              <option>This Week</option>
-              <option>This Month</option>
+              <option>
+                {intl.formatMessage({ id: "dashboard.thisWeek" })}
+              </option>
+              <option>
+                {intl.formatMessage({ id: "dashboard.thisMonth" })}
+              </option>
             </select>
           </div>
 
@@ -173,7 +180,9 @@ export function Dashboard() {
           transition={{ delay: 0.5 }}
           className="rounded-[24px] bg-white p-6 shadow-sm"
         >
-          <h3 className="mb-5 text-lg font-bold text-slate-900">Top Routes</h3>
+          <h3 className="mb-5 text-lg font-bold text-slate-900">
+            <FormattedMessage id="dashboard.topRoutes" />
+          </h3>
           <div className="flex flex-col gap-4">
             {topRoutes.map((route) => (
               <div
@@ -196,7 +205,8 @@ export function Dashboard() {
                       {route.destination}
                     </p>
                     <p className="text-xs text-slate-400">
-                      {route.flights} flights
+                      {route.flights}{" "}
+                      <FormattedMessage id="dashboard.flights" />
                     </p>
                   </div>
                 </div>
@@ -207,7 +217,7 @@ export function Dashboard() {
             ))}
           </div>
           <button className="mt-6 w-full rounded-xl border border-slate-100 py-3 text-xs font-bold text-slate-500 transition-colors hover:bg-slate-50">
-            View Report
+            <FormattedMessage id="dashboard.viewReport" />
           </button>
         </motion.div>
       </div>

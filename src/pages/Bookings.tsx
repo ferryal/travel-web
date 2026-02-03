@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const bookings = [
   {
@@ -8,10 +9,11 @@ const bookings = [
       pnr: "XJ9-220",
       avatar: "https://ui-avatars.com/api/?name=John+Doe&background=random",
     },
-    flight: "BA-109",
-    date: "Oct 24, 2023",
-    amount: 450.0,
-    status: "Confirmed",
+    flight: "GA-401",
+    date: "Feb 24, 2026",
+    amount: 7200000,
+    statusKey: "bookings.confirmed",
+    statusColor: "bg-success-50 text-success-600",
   },
   {
     id: "2",
@@ -21,9 +23,10 @@ const bookings = [
       avatar: "https://ui-avatars.com/api/?name=Alice+Smith&background=random",
     },
     flight: "SQ-634",
-    date: "Oct 25, 2023",
-    amount: 1200.0,
-    status: "Pending",
+    date: "Feb 25, 2026",
+    amount: 19200000,
+    statusKey: "bookings.pending",
+    statusColor: "bg-secondary-50 text-secondary-600",
   },
   {
     id: "3",
@@ -32,10 +35,11 @@ const bookings = [
       pnr: "A99-551",
       avatar: "https://ui-avatars.com/api/?name=Robert+Fox&background=random",
     },
-    flight: "AF-022",
-    date: "Oct 26, 2023",
-    amount: 820.0,
-    status: "Cancelled",
+    flight: "GA-875",
+    date: "Feb 26, 2026",
+    amount: 13120000,
+    statusKey: "bookings.cancelled",
+    statusColor: "bg-danger-50 text-danger-600",
   },
   {
     id: "4",
@@ -44,31 +48,27 @@ const bookings = [
       pnr: "C45-789",
       avatar: "https://ui-avatars.com/api/?name=Emily+Chen&background=random",
     },
-    flight: "UA-456",
-    date: "Oct 27, 2023",
-    amount: 560.0,
-    status: "Confirmed",
+    flight: "QG-802",
+    date: "Feb 27, 2026",
+    amount: 8960000,
+    statusKey: "bookings.confirmed",
+    statusColor: "bg-success-50 text-success-600",
   },
 ];
 
-const statusColors: Record<string, string> = {
-  Confirmed: "bg-success-50 text-success-600",
-  Pending: "bg-secondary-50 text-secondary-600",
-  Cancelled: "bg-danger-50 text-danger-600",
-  Completed: "bg-slate-100 text-slate-600",
-};
-
 export function Bookings() {
+  const intl = useIntl();
+
   return (
     <div className="page-enter">
       {/* Header */}
       <div className="mb-8 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
         <div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900">
-            Bookings
+            <FormattedMessage id="bookings.title" />
           </h1>
           <p className="mt-1 text-sm text-slate-500">
-            View and manage passenger reservations.
+            <FormattedMessage id="bookings.subtitle" />
           </p>
         </div>
       </div>
@@ -81,11 +81,21 @@ export function Bookings() {
       >
         {/* Table Header */}
         <div className="hidden grid-cols-12 gap-4 border-b border-slate-100 bg-slate-50/50 p-5 text-xs font-semibold uppercase tracking-wider text-slate-400 md:grid">
-          <div className="col-span-4">Passenger</div>
-          <div className="col-span-2">Flight</div>
-          <div className="col-span-2">Date</div>
-          <div className="col-span-2">Payment</div>
-          <div className="col-span-2 text-right">Status</div>
+          <div className="col-span-4">
+            <FormattedMessage id="bookings.passenger" />
+          </div>
+          <div className="col-span-2">
+            <FormattedMessage id="bookings.flight" />
+          </div>
+          <div className="col-span-2">
+            <FormattedMessage id="bookings.date" />
+          </div>
+          <div className="col-span-2">
+            <FormattedMessage id="bookings.payment" />
+          </div>
+          <div className="col-span-2 text-right">
+            <FormattedMessage id="bookings.status" />
+          </div>
         </div>
 
         {/* Table Rows */}
@@ -128,17 +138,15 @@ export function Bookings() {
 
             {/* Payment */}
             <div className="col-span-2 text-sm font-bold text-slate-900">
-              ${booking.amount.toFixed(2)}
+              Rp {booking.amount.toLocaleString("id-ID")}
             </div>
 
             {/* Status */}
             <div className="col-span-2 text-right">
               <span
-                className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-bold ${
-                  statusColors[booking.status]
-                }`}
+                className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-bold ${booking.statusColor}`}
               >
-                {booking.status}
+                {intl.formatMessage({ id: booking.statusKey })}
               </span>
             </div>
           </motion.div>

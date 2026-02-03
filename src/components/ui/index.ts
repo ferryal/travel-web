@@ -4,3 +4,4 @@ export { Badge } from "./Badge";
 export { Modal } from "./Modal";
 export { Card, CardHeader, CardTitle, CardContent } from "./Card";
 export { Select } from "./Select";
+export { LanguageSwitcher } from "./LanguageSwitcher";
